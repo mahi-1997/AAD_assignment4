@@ -11,10 +11,6 @@ struct Point
 };
  
 // To find orientation of ordered triplet (p, q, r).
-// The function returns following values
-// 0 --> p, q and r are colinear
-// 1 --> Clockwise
-// 2 --> Counterclockwise
 int orientation(Point p, Point q, Point r)
 {
     int val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
@@ -67,13 +63,21 @@ void convexHull(Point points[], int n)
     }
 }
  
-// Driver program to test above functions
+
 int main()
-{
-    Point points[] = { { 0, 3 }, { 2, 2 }, { 1, 1 }, { 2, 1 }, { 3, 0 },
-            { 0, 0 }, { 3, 3 } };
+{  
+    
+            Point *points;
+            int N;
+            cout << "Enter no of points N "<<endl;
+            cin>>N;
+            points=new Point[N];
+            for(int i=0;i<N;i++){
+            	cin>>points[i].x>>points[i].y;
+            }
+            
     cout << "The points in the convex hull are: ";
-    int n = sizeof(points) / sizeof(points[0]);
-    convexHull(points, n);
+   // int n = sizeof(points) / sizeof(points[0]);
+    convexHull(points, N);
     return 0;
 }
