@@ -1,3 +1,7 @@
+#include <cstdio>
+#include <limits.h>
+#include <ctime>
+#include <stdlib.h>  
 
 #include <iostream>
 using namespace std;
@@ -71,13 +75,37 @@ int main()
             int N;
             cout << "Enter no of points N "<<endl;
             cin>>N;
-            points=new Point[N];
-            for(int i=0;i<N;i++){
-            	cin>>points[i].x>>points[i].y;
-            }
-            
-    cout << "The points in the convex hull are: ";
+             points=new Point[N];
+            int check;
+	 cout<<"Enter\n 1.to check random generated points .\n2.to ckeck any known case\n";
+	   cin>>check;
+	   if(check==1)  {
+	   	 for (int i = 0; i < N; i++){   
+       
+        points[i].x=rand() %500 + (-250);
+        points[i].y=rand() %500 + (-250);
+        
+    } 
+	   }  
+	   if(check==2){
+	   	
+	   	 for (int i = 0; i < N; i++){  
+        cin>>points[i].x>>points[i].y;
+    } 
+    
+	   }
+          
+     
+	  //add timer here to calculate execution time
+	clock_t start;
+	double duration;
+	start = clock();
+	      
+    cout << "The points in the convex hull are: "<<endl;
    // int n = sizeof(points) / sizeof(points[0]);
     convexHull(points, N);
+    
+    duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+	cout<<"time: "<<duration <<" seconds"<<endl;
     return 0;
 }
