@@ -137,7 +137,7 @@ int main(){
         //reverse iterating order for lower part; still clock-wise
         cout << (*it)->getX() << ", " << (*it)->getY() << endl;
     }
-    cout << "Total time: " << (t3-t0)/CLOCKS_PER_SEC << " seconds" << endl;
+    cout << "Total time: " << (t3-t0)/CLOCKS_PER_SEC << " milli seconds" << endl;
     
     return 0;
 }
