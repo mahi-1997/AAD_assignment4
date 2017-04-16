@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stack>
 #include <stdlib.h>
+#include <ctime>
 using namespace std;
  
 struct Point
@@ -98,7 +99,7 @@ void convexHull(Point points[], int n)
         S.push(points[i]);
     }
  
-    // Now stack has the output points, print contents of stack
+    // print output i.e. contents of stack
     while (!S.empty())
     {
         Point p = S.top();
@@ -115,10 +116,34 @@ int main()
             cout << "Enter no of points N "<<endl;
             cin>>N;
             points=new Point[N];
-            for(int i=0;i<N;i++){
-            	cin>>points[i].x>>points[i].y;
-            }
+            
+            int check;
+	 cout<<"Enter\n 1.to check random generated points .\n2.to ckeck any known case\n";
+	   cin>>check;
+	   if(check==1)  {
+	   	 for (int i = 0; i < N; i++){   
+       
+        points[i].x=rand() %500 + (-250);
+        points[i].y=rand() %500 + (-250);
+        
+    } 
+	   }  
+	   if(check==2){
+	   	
+	   	 for (int i = 0; i < N; i++){  
+        cin>>points[i].x>>points[i].y;
+    } 
+    
+	   }
+          
+            
+      //add timer here to calculate execution time
+	clock_t start;
+	double duration;
+	start = clock();      
     cout << "The points in the convex hull are: \n";
     convexHull(points, N);
+    duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+	cout<<" Time:"<<duration <<" seconds"<<endl;
     return 0;
 }
