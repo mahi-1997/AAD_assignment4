@@ -118,6 +118,7 @@ int main(){
 	
 	    
     float t0 = clock();  //total time start
+	t0=t0*1000;
     sort(parray.begin(),parray.end(),comp); //sort raw data; increasing order of x
    
     findPartialHull(parray, upper, parray[0], parray[N-1]);   //upper hull, line direction p1-->pn
@@ -126,6 +127,7 @@ int main(){
     sort(upper.begin(),upper.end(),comp); //sort result; increasing order of x
     sort(lower.begin(),lower.end(),comp);
     float t3 = clock(); //second sort stop; also total time stop
+	t3=t3*1000;
     cout << "The convex hull is made up of the following points:" << endl;
     //iterate and print results
     for (vector<point*>::iterator it = upper.begin(); it < upper.end(); it++){  //upper part, clock-wise
