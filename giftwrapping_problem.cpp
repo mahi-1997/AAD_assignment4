@@ -96,16 +96,19 @@ int main()
 	   }
           
      
+	     
 	  //add timer here to calculate execution time
-	clock_t start;
+	clock_t start,end;
 	double duration;
 	start = clock();
-	      
+	 start=start*1000;     
     cout << "The points in the convex hull are: "<<endl;
    // int n = sizeof(points) / sizeof(points[0]);
+    //convexHull(points, N);
     convexHull(points, N);
-    
-    duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
-	cout<<"time: "<<duration <<" seconds"<<endl;
+    end=clock();
+    end=end*1000;
+    duration = ( end - start ) / (double) CLOCKS_PER_SEC;
+	cout<<"time: "<<duration <<" milli seconds"<<endl;
     return 0;
 }
